@@ -32,12 +32,11 @@ def generate_text():
     )
 
     user_instruction = (
-        f"כתוב ברכה עבור הבקשה הבאה: {prompt}\n"
-        f"סגנון הברכה: {style}.\n"
-        f"{'הברכה צריכה להיות מחורזת.\n' if rhyming else ''}"
-        f"אורך הברכה: {length}.\n"
-        f"הברכה מיועדת ל: {recipient_gender}.\n"
-        f"{'שלב את המילים הבאות בברכה: ' + ', '.join(important_words) + '.' if important_words else ''}"
+                f"""כתוב ברכה עבור הבקשה הבאה: {prompt}
+        סגנון הברכה: {style}.
+        {'הברכה צריכה להיות מחורזת.\n' if rhyming else ''}אורך הברכה: {length}.
+        הברכה מיועדת ל: {recipient_gender}.
+        {'שלב את המילים הבאות בברכה: ' + ', '.join(important_words) + '.' if important_words else ''}"""
     )
     try:
         response = openai.ChatCompletion.create(

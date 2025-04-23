@@ -10,6 +10,11 @@ load_dotenv()
 app = Flask(__name__)
 # client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 openai.api_key = os.environ["OPENAI_API_KEY"]
+
+@app.route('/', methods=['GET'])
+def index():
+    return 'שרת Flask רץ בהצלחה על פורט 5001', 200
+
 @app.route('/generate', methods=['POST'])
 def generate_text():
     data = request.json

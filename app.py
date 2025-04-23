@@ -30,13 +30,16 @@ def generate_text():
         "- החתימה (signature) תהיה סיום אישי ומכבד כמו 'שלך', 'באהבה', 'מאחל לך' וכו'.\n"
         "- אם אינך מצליח לנסח ברכה מתאימה – החזר מחרוזת ריקה בלבד: \"\"."
     )
+    rhyming_text = "הברכה צריכה להיות מחורזת.\n" if rhyming else ""
+    important_words_text = f"שלב את המילים הבאות בברכה: {', '.join(important_words)}." if important_words else ""
 
     user_instruction = (
-                f"""כתוב ברכה עבור הבקשה הבאה: {prompt}
-        סגנון הברכה: {style}.
-        {'הברכה צריכה להיות מחורזת.\n' if rhyming else ''}אורך הברכה: {length}.
-        הברכה מיועדת ל: {recipient_gender}.
-        {'שלב את המילים הבאות בברכה: ' + ', '.join(important_words) + '.' if important_words else ''}"""
+         f"כתוב ברכה עבור הבקשה הבאה: {prompt}\n"
+        f"סגנון הברכה: {style}.\n"
+        f"{rhyming_text}"
+        f"אורך הברכה: {length}.\n"
+        f"הברכה מיועדת ל: {recipient_gender}.\n"
+        f"{important_words_text}"
     )
     try:
         response = openai.ChatCompletion.create(

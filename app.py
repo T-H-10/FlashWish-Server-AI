@@ -40,7 +40,7 @@ def generate_text():
         f"{'שלב את המילים הבאות בברכה: ' + ', '.join(important_words) + '.' if important_words else ''}"
     )
     try:
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             model="gpt-4o-mini",  
             messages = [
                 {

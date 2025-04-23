@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
-
+# client = openai.OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+openai.api_key = os.environ["OPENAI_API_KEY"]
 @app.route('/generate', methods=['POST'])
 def generate_text():
     data = request.json
@@ -40,7 +40,7 @@ def generate_text():
         f"{'שלב את המילים הבאות בברכה: ' + ', '.join(important_words) + '.' if important_words else ''}"
     )
     try:
-        response = client.chat.completions.create(
+        response = openai.Completion.create(
             model="gpt-4o-mini",  
             messages = [
                 {

@@ -37,7 +37,7 @@ def generate_text():
     "- אם לא ניתן לנסח ברכה – החזר אך ורק את המחרוזת הריקה: \"\" (ללא JSON).\n"
  )
     # rhyming_text = "הברכה צריכה להיות מחורזת.\n" if rhyming else ""
-    # important_words_text = f"שלב את המילים הבאות בברכה: {', '.join(important_words)}." if important_words else ""
+    important_words_text = f"שלב את המילים הבאות בתוך תוכן הברכה: {', '.join(important_words)}." if important_words else ""
 
     user_instruction = (
         f"אנא נסח ברכה בהתבסס על הבקשה הבאה:  {prompt}\n"
@@ -45,7 +45,7 @@ def generate_text():
         f"אורך הברכה: {length}.\n"
         f"- מין מקבל הברכה: {recipient_gender}.\n"
         f"{'– הברכה צריכה להיות מחורזת.' if rhyming else ''}\n"
-        f"{f'- שלב את המילים הבאות בתוך תוכן הברכה: {", ".join(important_words)}.' if important_words else ''}\n"
+        f"{important_words_text}\n"
         f"הקפד להשתמש במידע הנ\"ל ליצירת ברכה מותאמת אישית.\n"
     )
     print(user_instruction)
